@@ -3,6 +3,7 @@ import { client } from '../sanity/lib/client';
 import AnimatedSection from '../components/AnimatedSection';
 import ProjectSection from '../components/ProjectSection';
 import ContactForm from '../components/ContactForm';
+import Footer from '../components/Footer';
 
 
 import { ExternalLink, Code2, Briefcase, MessageSquare, Server, Layout, Database } from 'lucide-react';
@@ -120,7 +121,7 @@ export default async function HomePage() {
                 
                 {/* রেজুমে বাটন (আলাদা ট্যাবে ওপেন হবে) */}
                 <a 
-                  href="https://your-google-drive-resume-link.com" 
+                  href="https://drive.google.com/file/d/14AI7-r_E6jAcrrk_ThTt07qLTgLKAJaF/view" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium hover:from-purple-500 hover:to-indigo-500 transition-all shadow-lg shadow-purple-600/20 hover:scale-[1.02]"
@@ -246,7 +247,11 @@ export default async function HomePage() {
         <AnimatedSection>
            <ContactForm />
         </AnimatedSection>
-      </div>
+          </div> {/* max-w-5xl কন্টেইনার ডিব এর ক্লোজিং */}
+      
+      {/* নতুন ফুটার সেকশনটি এখানে বসল (max-w-5xl ডিব এর বাইরে কিন্তু মেইনের ভেতরে) */}
+      <Footer />
+      {/* </div> */}
     </main>
   );
 }

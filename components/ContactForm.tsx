@@ -44,7 +44,7 @@ export default function ContactForm() {
       
       <div className="max-w-xl mx-auto space-y-4 text-center">
         <MessageSquare className="w-10 h-10 text-blue-400 mx-auto" />
-        <h2 className="text-3xl font-bold tracking-tight">Let's build something epic together</h2>
+        <h2 className="text-3xl font-bold tracking-tight">Let's Build Something Epic Together</h2>
         <p className="text-gray-400 text-sm">
           Have an exciting project idea, looking for a full-stack developer, or just want to say hi? Drop me a message below!
         </p>
@@ -54,7 +54,6 @@ export default function ContactForm() {
         <div>
           <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Your Name</label>
           <input 
-            type="text" 
             name="name" 
             required 
             placeholder="John Doe"
@@ -87,7 +86,7 @@ export default function ContactForm() {
         {/* সাকসেস এবং এরর মেসেজ অ্যালার্ট */}
         {result === "Success" && (
           <div className="p-4 rounded-xl text-sm font-medium bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-            🎉 Thank you! Your message has been sent directly to my email inbox.
+            🎉 Thank you! Your message has been sent.
           </div>
         )}
         {result === "Error" && (

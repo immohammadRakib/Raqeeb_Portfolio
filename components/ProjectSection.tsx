@@ -103,7 +103,7 @@ export default function ProjectSection({ projects }: { projects: Project[] }) {
             onClick={() => setShowAll(!showAll)}
             className="px-6 py-2.5 rounded-xl bg-gray-900 border border-gray-800 text-gray-300 font-medium hover:bg-gray-800 hover:text-white transition-all text-sm hover:scale-[1.02] active:scale-[0.98]"
           >
-            {showAll ? 'Show Less ↑' : `Show More (${projects.length - 2}+) ↓`}
+            {showAll ? 'Show Less ↑' : `Show More ↓`}
           </button>
         </div>
       )}
