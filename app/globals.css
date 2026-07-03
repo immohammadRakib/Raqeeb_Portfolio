@@ -24,3 +24,13 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* স্ক্রিনের নিচের কর্নারের যেকোনো ডেভলপমেন্ট লোগো বা ব্যাজ হাইড করার জন্য */
+div[id*="sanity"], 
+div[class*="sanity"],
+.sanity-studio-badge,
+#__next-to-html-badge {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
