@@ -2,8 +2,8 @@
 import { type SchemaTypeDefinition } from 'sanity'
 import { project } from './project'
 import { skill } from './skill'
-import { message } from './message' // নতুন ইমপোর্ট
+import { message } from './message'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [project, skill, message], // এখানে যুক্ত হলো
+  types: [project, skill, message],
 }
