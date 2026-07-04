@@ -16,7 +16,7 @@ export default function Footer() {
         {/* কলাম ১: ব্র্যান্ডিং ও ডেসক্রিপশন */}
         <div className="md:col-span-5 space-y-4 text-center md:text-left">
           <h3 className="text-lg font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent tracking-wide">
-            Md Abdur Rahman Raqeeb
+            Md Abdur Rahman Rakib - Full-Stack Engineer
           </h3>
           <p className="text-sm text-gray-400 leading-relaxed max-w-sm">
             Full-Stack Software Engineer specializing in Next.js architectures, clean computational layouts, and robust fluid interactive designs.
@@ -94,9 +94,9 @@ export default function Footer() {
       {/* নিচের বেসলাইন সাব-ফুটার */}
       <div className="max-w-5xl mx-auto px-6 mt-16 pt-8 border-t border-gray-950/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left relative z-10">
         <p className="text-xs text-gray-500">
-          © {new Date().getFullYear()} Md Abdur Rahman Raqeeb. All rights reserved.
+          © {new Date().getFullYear()} Md Abdur Rahman Rakib. All rights reserved.
         </p>
-        <p className="text-xs text-gray-600 flex items-center gap-1.5 justify-center">
+        <p className="text-xs text-gray-600 flex items-center gap-1.5 justify-center" suppressHydrationWarning>
           <Code2 className="w-3.5 h-3.5" /> Built with Next.js, Sanity & Tailwind
         </p>
       </div>

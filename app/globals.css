@@ -34,3 +34,17 @@ div[class*="sanity"],
   opacity: 0 !important;
   pointer-events: none !important;
 }
+
+
+body:has(#sanity) {
+  background-color: #fff !important;
+  color: #000 !important;
+  display: block !important;
+  min-height: 100vh !important;
+}
+
+#sanity {
+  display: block !important;
+  min-height: 100vh !important;
+  background-color: #fff !important;
+}

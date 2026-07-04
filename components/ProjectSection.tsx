@@ -20,6 +20,7 @@ export default function ProjectSection({ projects }: { projects: Project[] }) {
   const [showAll, setShowAll] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
+  // প্রথম ২টি প্রজেক্ট ফিল্টার করে রাখার লজিক
   const visibleProjects = showAll ? projects : projects.slice(0, 2);
 
   return (
@@ -29,7 +30,8 @@ export default function ProjectSection({ projects }: { projects: Project[] }) {
         <h2 className="text-3xl font-bold tracking-tight">Selected Projects</h2>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      {/* একটার নিচে একটা (Vertical Stack) লেআউট */}
+      <div className="flex flex-col gap-6 max-w-3xl mx-auto w-full">
         {visibleProjects.map((project) => {
           const imageUrl = project.image ? urlFor(project.image).url() : null;
 
@@ -38,23 +40,24 @@ export default function ProjectSection({ projects }: { projects: Project[] }) {
               key={project._id}
               layoutId={`card-${project._id}`}
               onClick={() => setSelectedProject(project)}
-              whileHover={{ scale: 1.03, y: -5 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              className="group bg-gray-900/30 border border-gray-800 rounded-2xl flex flex-col justify-between overflow-hidden cursor-pointer hover:border-purple-500/30 transition-all shadow-lg"
+              whileHover={{ scale: 1.01, y: -2 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              className="group bg-gray-900/20 border border-gray-800/80 rounded-2xl flex flex-col md:flex-row overflow-hidden cursor-pointer hover:border-purple-500/30 transition-all shadow-lg min-h-[200px]"
             >
+              {/* বাম পাশে ছবি (যদি আপলোড করা থাকে) */}
               {imageUrl && (
-                <div className="w-full h-48 overflow-hidden bg-gray-950 border-b border-gray-800 relative">
+                <div className="w-full md:w-64 h-48 md:h-auto overflow-hidden bg-gray-950 border-b md:border-b-0 md:border-r border-gray-800 relative flex-shrink-0">
                   <img 
                     src={imageUrl} 
                     alt={project.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/50 to-transparent" />
                 </div>
               )}
 
+              {/* ডান পাশে টেক্সট কন্টেন্ট */}
               <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
-                <div className="space-y-3">
+                <div className="space-y-2">
                   <h3 className="text-xl font-bold text-gray-100 group-hover:text-purple-400 transition-colors">
                     {project.title}
                   </h3>
@@ -70,12 +73,12 @@ export default function ProjectSection({ projects }: { projects: Project[] }) {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-gray-800/60 mt-4" onClick={(e) => e.stopPropagation()}>
+                <div className="flex items-center justify-between pt-4 border-t border-gray-800/40" onClick={(e) => e.stopPropagation()}>
                   <span className="text-xs text-purple-400/70 font-medium group-hover:text-purple-400 transition-colors">
                     Click for details →
                   </span>
                   
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-4">
                     {project.githubLink && (
                       <a href={project.githubLink} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
                         <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://w3.org">
@@ -98,17 +101,17 @@ export default function ProjectSection({ projects }: { projects: Project[] }) {
 
       {/* Show More / Show Less বাটন */}
       {projects.length > 2 && (
-        <div className="text-center pt-4">
+        <div className="text-center pt-6">
           <button
             onClick={() => setShowAll(!showAll)}
             className="px-6 py-2.5 rounded-xl bg-gray-900 border border-gray-800 text-gray-300 font-medium hover:bg-gray-800 hover:text-white transition-all text-sm hover:scale-[1.02] active:scale-[0.98]"
           >
-            {showAll ? 'Show Less ↑' : `Show More ↓`}
+            {showAll ? 'Show Less ↑' : `Show More (${projects.length - 2}+) ↓`}
           </button>
         </div>
       )}
 
-      {/* পপ-আপ ডিটেইলস মোডাল */}
+      {/* পপ-আপ ডিটেইলস মোডাল (Modal Animation) */}
       <AnimatePresence>
         {selectedProject && (
           <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
@@ -128,6 +131,7 @@ export default function ProjectSection({ projects }: { projects: Project[] }) {
               transition={{ type: 'spring', duration: 0.5 }}
               className="bg-[#0b0f19] border border-gray-800 w-full max-w-2xl rounded-3xl overflow-hidden relative z-10 shadow-2xl flex flex-col max-h-[90vh]"
             >
+              {/* ক্লোজ বাটন */}
               <button
                 onClick={() => setSelectedProject(null)}
                 className="absolute top-4 right-4 p-2 rounded-full bg-gray-900/80 border border-gray-800 text-gray-400 hover:text-white hover:bg-gray-800 transition-colors z-20"
@@ -135,6 +139,7 @@ export default function ProjectSection({ projects }: { projects: Project[] }) {
                 <X className="w-5 h-5" />
               </button>
 
+              {/* মোডালের ভেতরের ইমেজ */}
               {selectedProject.image && (
                 <div className="w-full h-64 bg-gray-950 relative">
                   <img 
@@ -146,6 +151,7 @@ export default function ProjectSection({ projects }: { projects: Project[] }) {
                 </div>
               )}
 
+              {/* মোডাল টেক্সট কন্টেন্ট এরিয়া */}
               <div className="p-6 md:p-8 space-y-6 overflow-y-auto flex-1">
                 <div className="space-y-2">
                   <span className="text-xs font-semibold text-purple-400 uppercase tracking-widest block">Project Detail Overview</span>
@@ -154,6 +160,23 @@ export default function ProjectSection({ projects }: { projects: Project[] }) {
                   </h3>
                   <p className="text-gray-300 text-base leading-relaxed pt-2 whitespace-pre-line">
                     {selectedProject.description}
+                    {/* components/ProjectSection.tsx এর পপ-আপ ডেসক্রিপশনের নিচে এটি বসান */}
+<p className="text-gray-300 text-base leading-relaxed pt-2 whitespace-pre-line">
+  {selectedProject.description}
+</p>
+
+{/* যদি প্রজেক্টটি DevPulse হয় তবে এর ভেতরের স্পেশাল আর্কিটেকচার হাইলাইট করার জন্য */}
+{selectedProject.title.includes('DevPulse') && (
+  <div className="mt-4 space-y-3 bg-gray-950/50 border border-gray-800/80 p-4 rounded-xl text-sm">
+    <h4 className="font-bold text-purple-400">⚡ Core Architectural Highlights:</h4>
+    <ul className="list-disc pl-4 space-y-1.5 text-gray-400">
+      <li><strong className="text-gray-300">Granular RBAC System:</strong> Strict route restrictions separating <span className="text-blue-400">Contributors</span> (create/view/own-update) and <span className="text-purple-400">Maintainers</span> (global edit/delete/workflow state changes).</li>
+      <li><strong className="text-gray-300">Raw SQL Architecture:</strong> Zero ORMs or query builders used. Relational mapping resolved programmatically via app-level batch data mapping to bypass SQL JOIN footprints.</li>
+      <li><strong className="text-gray-300">Secure Token Flow:</strong> Fully encrypted authorization headers deploying signed stateless JSON Web Tokens alongside salted bcrypt credentials hashing.</li>
+    </ul>
+  </div>
+)}
+
                   </p>
                 </div>
 
@@ -168,6 +191,7 @@ export default function ProjectSection({ projects }: { projects: Project[] }) {
                   </div>
                 </div>
 
+                {/* মোডালের ভেতরের সোর্স কোড ও লাইভ ডেমো বাটন */}
                 <div className="flex space-x-4 pt-6 border-t border-gray-800/80">
                   {selectedProject.githubLink && (
                     <a
