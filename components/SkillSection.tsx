@@ -1,9 +1,9 @@
-// components/SkillsSection.tsx - অংশ ১
-'use strict';
-'use client';
 
-import { Code2 } from 'lucide-react';
-import { motion } from 'framer-motion';
+"use strict";
+"use client";
+
+import { Code2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface Skill {
   _id: string;
@@ -15,89 +15,46 @@ export default function SkillsSection({ skills }: { skills: Skill[] }) {
   return (
     <section className="space-y-8">
       <div className="flex items-center gap-3 border-b border-gray-800 pb-4">
-        <Code2 className="text-blue-400 w-6 h-6 animate-pulse" />
+        <Code2 className="text-blue-400 w-6 h-6" />
         <h2 className="text-3xl font-bold tracking-tight">Core Competencies</h2>
       </div>
-      
+
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {skills.map((skill, index) => {
-          let skillIcon = null;
-          let glowColor = "group-hover:border-blue-500/50 group-hover:shadow-blue-500/10";
-          const nameLower = skill.name.toLowerCase();
-
-          // ১. Next.js
-          if (nameLower.includes('next.js') || nameLower.includes('nextjs')) {
-            skillIcon = <svg className="w-5 h-5 fill-current text-white" viewBox="0 0 24 24" xmlns="http://w3.org"><path d="M12 0a12 12 0 1 0 12 12A12.013 12.013 0 0 0 12 0zm6.662 19.35l-6.23-7.525L12 11.417V19.5h1.226v-6.138l5.437 6.643a8.88 8.88 0 0 0 1.954-1.343l-.355-1.162zM12 4.5a.75.75 0 0 0-.75.75v5.828l1.371 1.657V5.25A.75.75 0 0 0 12 4.5zm0-3.5a11 11 0 1 1-11 11 11 11 0 0 1 11-11z"/></svg>;
-            glowColor = "group-hover:border-white/40 group-hover:shadow-white/5";
-          } 
-          // ২. TypeScript
-          else if (nameLower.includes('typescript') || nameLower.includes('ts')) {
-            skillIcon = <svg className="w-5 h-5 fill-current text-[#3178C6]" viewBox="0 0 24 24" xmlns="http://w3.org"><path d="M0 0h24v24H0V0zm21.6 19.462V12.1h-2.154v7.362H21.6zM12.923 12.1H6.154v2.154h2.23V19.46h2.308v-5.207h2.23V12.1z"/></svg>;
-            glowColor = "group-hover:border-[#3178C6]/50 group-hover:shadow-[#3178C6]/10";
-          } 
-          // ৩. Tailwind CSS
-          else if (nameLower.includes('tailwind')) {
-            skillIcon = <svg className="w-5 h-5 fill-current text-[#06B6D4]" viewBox="0 0 24 24" xmlns="http://w3.org"><path d="M12 6.036c-2.402 0-4.623.764-6.444 2.056C4.437 10.364 4.14 12.87 5.2 14.8c1.35 2.455 4.314 3.164 6.8 2.055 2.127-.95 3.993-2.735 5.564-4.623.364-.436.364-1.028 0-1.464C16.143 8.91 14.187 7.027 12 6.036zm0-5.885c-2.402 0-4.623.764-6.444 2.056C4.437 4.544 4.14 7.05 5.2 8.98c1.35 2.454 4.314 3.164 6.8 2.055 2.127-.95 3.993-2.736 5.564-4.624.364-.436.364-1.027 0-1.464C16.143 3.09 14.187 1.207 12 .151z"/></svg>;
-            glowColor = "group-hover:border-[#06B6D4]/50 group-hover:shadow-[#06B6D4]/10";
-          } 
-          // 🚀 ৪. Prisma ORM (নতুন চমৎকার লোগো সহ)
-          else if (nameLower.includes('prisma')) {
-            skillIcon = <svg className="w-5 h-5 fill-current text-[#2D3748] dark:text-white" viewBox="0 0 24 24" xmlns="http://w3.org"><path d="M22.25 12c0-5.66-4.59-10.25-10.25-10.25S1.75 6.34 1.75 12s4.59 10.25 10.25 10.25 10.25-4.59 10.25-10.25zm-14.73 4.12V7.88l7.15 4.12-7.15 4.12z"/></svg>;
-            glowColor = "group-hover:border-indigo-500/50 group-hover:shadow-indigo-500/10";
-          } 
-          // ৫. Node.js
-          else if (nameLower.includes('node')) {
-            skillIcon = <svg className="w-5 h-5 fill-current text-[#339933]" viewBox="0 0 24 24" xmlns="http://w3.org"><path d="M12 1.608L2.35 7.182v11.144L12 23.892l9.65-5.566V7.182zm4.332 14.161c-.2.33-.53.58-.91.7a3.483 3.483 0 0 1-2.46-.22l-.12-.07v1.52l.11.06a2.272 2.272 0 0 0 1.62.15c.24-.07.45-.23.57-.45a1.26 1.26 0 0 0-.25-1.57c-.36-.3-.82-.5-1.3-.6l-.6-.11a2.522 2.522 0 0 1-1.78-2.18c0-.52.14-1 .4-1.39.23-.33.56-.58.94-.7a3.303 3.303 0 0 1 2.37.19l.11.06v-1.1l-.11-.06a4.415 4.415 0 0 0-3.14-.26c-.49.14-.92.46-1.2.9a3.52 3.52 0 0 0-.46 2.36c.1.66.42 1.27.92 1.7a3.7 3.7 0 0 0 2.22.8c.3.03.58.12.83.27.2.14.3.37.28.6a1.143 1.143 0 0 1-.3.8z"/></svg>;
-            glowColor = "group-hover:border-[#339933]/50 group-hover:shadow-[#339933]/10";
-          } 
-          // ⑥. PostgreSQL
-          else if (nameLower.includes('postgres')) {
-            skillIcon = <svg className="w-5 h-5 fill-current text-[#4169E1]" viewBox="0 0 24 24" xmlns="http://w3.org"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.122 16.234c-.76.76-1.862 1.138-3.314 1.138h-3.1v3.134H8.384V5.374h5.108c1.45 0 2.532.374 3.254 1.118.72.744 1.082 1.832 1.082 3.268 0 1.16-.2 2.052-.6 2.664-.4.612-1.002 1.014-1.802 1.206.942.22 1.632.66 2.072 1.32.44.66.66 1.61.66 2.852 0 1.48-.344 2.568-1.032 3.352z"/></svg>;
-            glowColor = "group-hover:border-[#4169E1]/50 group-hover:shadow-[#4169E1]/10";
-          } 
-          // ⑦. Git & GitHub
-          else if (nameLower.includes('git')) {
-            skillIcon = <svg className="w-5 h-5 fill-current text-[#F05032]" viewBox="0 0 24 24" xmlns="http://w3.org"><path d="M23.546 10.93L13.07.452a1.436 1.436 0 0 0-2.032 0l-2.11 2.108 3.016 3.017a1.439 1.439 0 0 1 2.034.024 1.438 1.438 0 0 1 .016 2.015l-3.02 3.02a1.442 1.442 0 0 1-1.921.111l-2.613-2.615v4.257l2.842 2.842a1.44 1.44 0 0 0 2.035 0l10.233-10.23a1.442 1.442 0 0 0 0-2.036zM3.469 11.45a1.442 1.442 0 0 0 0 2.036l2.122 2.12a1.44 1.44 0 0 0 2.035 0l2.124-2.123v-4.07L7.636 7.298a1.44 1.44 0 0 0-2.035 0L3.47 11.45z"/></svg>;
-            glowColor = "group-hover:border-[#F05032]/50 group-hover:shadow-[#F05032]/10";
-          } else {
-            skillIcon = <Code2 className="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors" />;
-          }
-// components/SkillsSection.tsx - অংশ ২
+          
 
           return (
-            <motion.div 
+            <motion.div
               key={skill._id}
-              // আউটস্ট্যান্ডিং এন্ট্রান্স অ্যানিমেশন: প্রতিটা কার্ড সিরিয়ালি নিচ থেকে ভেসে উঠবে
+              
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ 
-                type: 'spring', 
-                stiffness: 100, 
+              transition={{
+                type: "spring",
+                stiffness: 100,
                 damping: 15,
-                delay: index * 0.05 // স্ট্যাগার্ড ডিলে ইফেক্ট
+                delay: index * 0.05,
               }}
-              // থ্রিডি ইন্টারঅ্যাক্টিভ টিল্ট এবং জুম হোভার ইফেক্ট
-              whileHover={{ 
-                scale: 1.04, 
-                rotateX: 4, 
-                rotateY: -4,
-                z: 10
-              }}
-              className={`group bg-gray-900/30 border border-gray-800/80 p-5 rounded-2xl flex items-center gap-4 cursor-pointer transition-all duration-300 shadow-md ${glowColor}`}
-              style={{ transformStyle: 'preserve-3d' }}
-            >
-              {/* নিয়ন লোগো ট্রে */}
-              <div className="w-10 h-10 rounded-xl bg-gray-950 flex items-center justify-center border border-gray-800 group-hover:scale-105 group-hover:bg-gray-900/80 transition-all shadow-inner overflow-hidden flex-shrink-0">
-                {skillIcon}
-              </div>
               
-              {/* টেক্সট */}
-              <div style={{ transform: 'translateZ(20px)' }}>
-                <p className="font-semibold text-gray-200 group-hover:text-blue-400 transition-colors">
+              whileHover={{
+                scale: 1.04,
+                rotateX: 4,
+                rotateY: -4,
+                z: 10,
+              }}
+              className="group bg-gray-900/30 border border-gray-800/80 p-5 rounded-2xl flex flex-col justify-center items-center text-center cursor-pointer transition-all duration-300 shadow-md hover:border-blue-500/40 hover:shadow-blue-500/5"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+        
+              <div
+                style={{ transform: "translateZ(20px)" }}
+                className="space-y-2"
+              >
+                <p className="font-extrabold text-xl bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent group-hover:from-blue-400 group-hover:to-cyan-400 transition-colors duration-300">
                   {skill.name}
                 </p>
-                <span className="text-xs text-gray-500 uppercase tracking-wider block mt-0.5">
+                <span className="text-xs text-gray-500 uppercase tracking-widest block font-semibold">
                   {skill.category}
                 </span>
               </div>
